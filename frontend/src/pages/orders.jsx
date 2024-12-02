@@ -1,6 +1,6 @@
 import React from 'react'
 
-const orders = () => {
+function orders() {
   return (
     <div>
       
@@ -9,3 +9,4 @@ const orders = () => {
 }
 
 export default orders
+
