@@ -15,7 +15,7 @@ import Navbar from './components/Navbar'
 
 const App = () => {
   return (
-    <div className='px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]'>
+    <div className='px-1 sm:px-[2vw] md:px-[2vw] lg:px-[2vw]'>
       <Navbar/>
       <Routes>
         <Route path='/' element={<Home/>} />

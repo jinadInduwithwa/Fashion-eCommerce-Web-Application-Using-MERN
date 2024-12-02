@@ -73,9 +73,13 @@ import razorpay_logo from './razorpay_logo.png'
 import stripe_logo from './stripe_logo.png'
 import cross_icon from './cross_icon.png'
 import dropdown_icon from './dropdown_icon.png'
+import lg_Hero from './lg_Hero.jpg'
+import sm_Hero from './sm_Hero.jpg'
 
 export const assets = {
     logo,
+    sm_Hero,
+    lg_Hero,
     hero_img,
     dropdown_icon,
     cart_icon,
