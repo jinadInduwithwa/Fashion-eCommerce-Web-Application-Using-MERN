@@ -8,7 +8,7 @@ function Footer() {
       <div className="grid grid-cols-1 sm:grid-cols-[3fr_1fr_1fr] gap-10">
         {/* Logo and Description */}
         <div>
-          <img src={assets.logo} className="mb-5 w-32" alt="logo" />
+          <img src={assets.logo} className="mb-1 w-32" alt="logo" />
           <p className="w-full md:w-2/3 text-gray-600">
             Arch 64 - Redefining fashion with timeless style and quality. Explore, express, and elevate your wardrobe with us.
           </p>
