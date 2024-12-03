@@ -75,6 +75,7 @@ import cross_icon from './cross_icon.png'
 import dropdown_icon from './dropdown_icon.png'
 import lg_Hero from './lg_Hero.jpg'
 import sm_Hero from './sm_Hero.jpg'
+import exchange_icon from './exchange_icon.png'
 
 export const assets = {
     logo,
@@ -86,6 +87,7 @@ export const assets = {
     profile_icon,
     quality_icon,
     search_icon,
+    exchange_icon,
     star_dull_icon,
     star_icon,
     bin_icon,
