@@ -7,7 +7,6 @@ const LatestCollection = () => {
     const { products } = useContext(ShopContext);
     const [latestProducts, setLatestProducts] = useState([]);
 
-    console.log('Products from context:', latestProducts);
 
     useEffect(() => {
         if (Array.isArray(products) && products.length > 0) {

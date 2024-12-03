@@ -8,13 +8,13 @@ function Hero() {
       <img 
         src={assets.sm_Hero} 
         alt="small hero image" 
-        className="block w-full h-auto sm:hidden" 
+        className="block w-full h-auto sm:hidden z-10" 
       />
       {/* Large Screen Image */}
       <img 
         src={assets.lg_Hero} 
         alt="large hero image" 
-        className="hidden w-full h-auto sm:block" 
+        className="hidden w-full h-auto sm:block z-10" 
       />
 
       <button 

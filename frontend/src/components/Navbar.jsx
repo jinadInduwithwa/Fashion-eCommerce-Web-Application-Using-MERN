@@ -5,8 +5,11 @@ import {NavLink, Link} from 'react-router-dom'
 function Navbar() {
     const [visible,setVisible] = useState(false);
   return (
-    <div className='flex items-center justify-between py-3 front-medium'>
+    <div className='flex items-center justify-between py-3 front-medium '>
+        <Link to='/'>
         <img src={assets.logo} className='w-20' alt='logo'/>
+        </Link>
+        
 
         <ul className='hidden sm:flex gap-5 text-sm text-gray-700'>
             <NavLink to='/' className='flex flex-col items-center gap-1'>
@@ -31,7 +34,7 @@ function Navbar() {
 
             <div className='group relative'>
                 <img src={assets.profile_icon} alt="profile" className='w-5 cursor-pointer' />
-                <div className='group-hover:block hidden absolute dropdown-menu right-0 pt-4'>
+                <div className='group-hover:block hidden absolute z-50 dropdown-menu right-0 pt-4'>
                     <div className='flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-500 rounded' >
                         <p className='coursor-poinytyer hover:text-black'>Profile</p>
                         <p className='coursor-poinytyer hover:text-black'>Order</p>
@@ -48,8 +51,8 @@ function Navbar() {
             <img onClick={()=>setVisible(true)} src={assets.menu_icon} alt="menu" className='w-5 cursor-pointer sm:hidden' />
         </div>
         {/* side bar menu */}
-        <div className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all ${visible ? 'w-full' : 'w-0'}`}>
-            <div className='flex flex-col text-gray-700'>
+        <div className={`absolute z-50 top-0 right-0 bottom-0 overflow-hidden bg-white transition-all ${visible ? 'w-full' : 'w-0'}`}>
+            <div className='flex flex-col text-gray-700 '>
                 <div className='flex items-center gap-4 p-3 cursor-pointer' onClick={()=>setVisible(false)}>
                     <img src={assets.dropdown_icon} alt="" className='h-4 rotate-180'/>
                     <p>Back</p>
