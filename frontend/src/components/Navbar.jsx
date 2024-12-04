@@ -6,7 +6,7 @@ import { ShopContext } from '../context/ShopContext';
 
 function Navbar() {
     const [visible,setVisible] = useState(false);
-    const {setShowSearch} = useContext(ShopContext)
+    const {setShowSearch, getCardCount} = useContext(ShopContext)
   return (
     <div className='flex items-center justify-between py-3 front-medium '>
         <Link to='/'>
@@ -19,7 +19,7 @@ function Navbar() {
                 <p>HOME</p>
                 <hr className='w-2/4 border-none h-[1.5px] bg-gray-700 hidden'/>
             </NavLink>
-            <NavLink to='/collection' className='flex flex-col items-center gap-1 '>
+            <NavLink to='/collection' className='flex flex-col items-center gap-1'>
                 <p>COLLECTION</p>
                 <hr className='w-2/4 border-none h-[1.5px] bg-gray-700 hidden'/>
             </NavLink>
@@ -48,7 +48,7 @@ function Navbar() {
 
             <Link to='/cart' className='relative'>
                 <img src={assets.cart_icon} alt="cart" className='w-5 min-w-5' />
-                <p className='absolute right-[-5px] bottom-[-5px] w-4 text-center leading-4 bg-black text-white aspect-square rounded-full text-[10px]'>20</p>
+                <p className='absolute right-[-5px] bottom-[-5px] w-4 text-center leading-4 bg-black text-white aspect-square rounded-full text-[10px]'>{getCardCount()}</p>
             </Link>
 
             <img onClick={()=>setVisible(true)} src={assets.menu_icon} alt="menu" className='w-5 cursor-pointer sm:hidden' />

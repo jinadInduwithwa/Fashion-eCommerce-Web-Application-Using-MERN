@@ -1,5 +1,7 @@
 import React from 'react'
 import {Routes, Route} from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 //import pages
 import Home from './pages/Home'
@@ -15,9 +17,12 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import SearchBar from './components/SearchBar'
 
+
+
 const App = () => {
   return (
     <div className='px-1 sm:px-[4vw] md:px-[4vw] lg:px-[2vw]'>
+      <ToastContainer />
       <Navbar/>
       <SearchBar/>
       <Routes>
