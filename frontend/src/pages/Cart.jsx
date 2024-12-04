@@ -2,9 +2,10 @@ import React, { useEffect, useState, useContext } from 'react';
 import { ShopContext } from '../context/ShopContext';
 import Title from '../components/Title';
 import { assets } from '../assets/frontend_assets/assets';
+import CartTotal from '../components/CartTotal';
 
 const Cart = () => {
-  const { products, currency, cartItem } = useContext(ShopContext); // Fixed 'cartItems' to 'cartItem'
+  const { products, currency, cartItem, updateQuantity } = useContext(ShopContext);
   const [cartData, setCartData] = useState([]);
 
   useEffect(() => {
@@ -20,7 +21,7 @@ const Cart = () => {
         }
       }
     }
-    setCartData(tempData); // Update cartData state with tempData
+    setCartData(tempData); 
   }, [cartItem]);
 
   return (
@@ -50,6 +51,7 @@ const Cart = () => {
                 </div>
                 <input
                   type="number"
+                  onChange={(e)=> e.target.value === '' || e.target.value === '0' ? null : updateQuantity(item._id,item.size,Number(e.target.value))}
                   min={1}
                   defaultValue={item.quantity}
                   className="border max-w-10 sm:max-w-20 px-1 sm:px-2 py-1"
@@ -58,7 +60,7 @@ const Cart = () => {
                   src={assets.bin_icon}
                   className="w-4 mr-4 sm:w-5 cursor-pointer"
                   alt=""
-                  onClick={() => handleRemoveItem(item._id, item.size)} // Handle item removal
+                  onClick={() => updateQuantity(item._id, item.size,0)} 
                 />
               </div>
             );
@@ -66,6 +68,12 @@ const Cart = () => {
         ) : (
           <p className="text-gray-500 text-center">Your cart is empty</p>
         )}
+      </div>
+      <div className='flex justify-end my-20'>
+        <div className='w-full sm:w-[450px]'>
+          <CartTotal/>
+        </div>
+
       </div>
     </div>
   );
