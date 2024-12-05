@@ -3,9 +3,10 @@ import { ShopContext } from '../context/ShopContext';
 import Title from '../components/Title';
 import { assets } from '../assets/frontend_assets/assets';
 import CartTotal from '../components/CartTotal';
+import PlaceOrder from './PlaceOrder';
 
 const Cart = () => {
-  const { products, currency, cartItem, updateQuantity } = useContext(ShopContext);
+  const { products, currency, cartItem, updateQuantity, navigate } = useContext(ShopContext);
   const [cartData, setCartData] = useState([]);
 
   useEffect(() => {
@@ -73,7 +74,7 @@ const Cart = () => {
         <div className='w-full sm:w-[450px]'>
           <CartTotal/>
           <div className='w-full text-end'>
-            <button className='bg-black text-white text-sm my-8 px-8 py-3'>CHECKOUT</button>
+            <button onClick={()=>navigate('./place-order')} className='bg-black text-white text-sm my-8 px-8 py-3'>CHECKOUT</button>
 
           </div>
         </div>
