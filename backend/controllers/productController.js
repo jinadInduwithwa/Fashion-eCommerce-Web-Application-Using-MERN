@@ -4,7 +4,7 @@ import productModel from "../models/productModel.js"
 const addProduct = async(req,res) =>{
     try {
          // Extracting fields from request body
-         const { name, description, price, category, subCategory, sizes, bestseller } = req.body;
+         const { name, description, price, category, subCategory, sizes, bestSeller } = req.body;
 
          // Extracting images from request files
          const image1 = req.files?.image1?.[0];
@@ -25,6 +25,22 @@ const addProduct = async(req,res) =>{
                 return result.secure_url;
             })
         );
+
+        // Safe parsing of sizes
+        let parsedSizes = [];
+        if (sizes) {
+            try {
+                parsedSizes = JSON.parse(sizes);
+                if (!Array.isArray(parsedSizes)) {
+                    throw new Error("Sizes must be a valid JSON array.");
+                }
+            } catch (error) {
+                return res.status(400).json({
+                    success: false,
+                    message: "Invalid JSON format for 'sizes'. It must be a valid JSON array."
+                });
+            }
+        }
     
         const productData = {
             name,
@@ -32,9 +48,9 @@ const addProduct = async(req,res) =>{
             category,
             price: Number(price),
             subCategory,
-            bestseller: bestseller === "true" ? true : false,
-            sizes:JSON.parse(sizes),
-            Image: imagesUrl,
+            bestSeller: bestSeller === "true" ? true : false,      
+            sizes: parsedSizes,
+            image: imagesUrl,
             date: Date.now()
         };
 
@@ -53,18 +69,41 @@ const addProduct = async(req,res) =>{
 
 // route for list product
 const listProduct = async(req,res) =>{
+    try {
+        const products = await productModel.find({})
+        res.json({success:true,products})
+    } catch (error) {
+        console.error(error);
+        res.json({ success: false, message: error.message });
+    }
     
 }
 
 
 // route for remove product
 const removeProduct = async(req,res) =>{
+    try {
+        await productModel.findByIdAndDelete(req.body.id)
+        res.json({success:true, message:"Product Removed"})
+
+    } catch (error) {
+        console.error(error);
+        res.json({ success: false, message: error.message });
+   
+    }
     
 }
 
-// route for single product infomation
-const singleProduct = async(req,res) =>{
-    
+const singleProduct = async (req, res) => {
+    try {
+        const { productId } = req.body; 
+        const product = await productModel.findById(productId);
+        res.json({ success: true, product }); 
+    } catch (error) {
+        console.error(error); 
+        res.json({ success: false, message: error.message });
+    }
 }
+
 
 export {addProduct, listProduct, removeProduct, singleProduct}
