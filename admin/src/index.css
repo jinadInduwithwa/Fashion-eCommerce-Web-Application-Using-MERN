@@ -11,3 +11,9 @@
     background-color:#FFF8DE;
     border-color: #F5F4B3;
 }
+
+select,input,textarea{
+    border: 1px solid #F5F4B3;
+    outline-color: burlywood;
+    border-radius: 4px;
+}
